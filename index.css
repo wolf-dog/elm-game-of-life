@@ -1,0 +1,70 @@
+body {
+  color: rgb(33, 37, 41);
+  background-color: rgb(248, 249, 250);
+}
+
+h1 {
+  color: rgb(248, 249, 250);
+  font-size: 1.5em;
+  margin: 0 15px;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+label {
+  margin-bottom: 0;
+}
+
+.nav {
+  background: rgb(33, 37, 41);
+  padding: 0.5em 0;
+  align-items: center;
+}
+
+.menu button {
+  width: 4em;
+}
+
+.menu-right {
+  float: right;
+  position: relative;
+  margin-left: 10em;
+}
+
+ul.settings {
+  position: absolute;
+  width: 13em;
+  margin-top: 0.25em;
+  background: rgb(255, 255, 255);
+  padding: 0.5em;
+  border: solid 1px rgb(206, 212, 218);
+  border-radius: 5px;
+}
+
+.collapsed {
+  display: none;
+}
+
+li.settings-row {
+  margin-top: 0.5em;
+}
+
+li.settings-row:first-child {
+  margin-top: 0;
+}
+
+.generation {
+  color: rgb(108, 117, 125);
+  font-size: 0.9em;
+  background-color: rgb(218, 224, 230);
+  padding: 0.1em 15px;
+  border-bottom: solid 1px rgb(206, 212, 218);
+}
+
+.world {
+  margin-top: 15px;
+  margin-left: 15px;
+}

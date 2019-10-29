@@ -4394,7 +4394,7 @@ function _Browser_load(url)
 	}));
 }
 var author$project$Cell$Life = 0;
-var author$project$Main$Square = 0;
+var author$project$Main$Squircle = 1;
 var elm$core$Array$branchFactor = 32;
 var elm$core$Array$Array_elm_builtin = F4(
 	function (a, b, c, d) {
@@ -4882,13 +4882,13 @@ var elm$json$Json$Decode$errorToStringHelp = F2(
 var elm$core$Platform$Cmd$batch = _Platform_batch;
 var elm$core$Platform$Cmd$none = elm$core$Platform$Cmd$batch(_List_Nil);
 var author$project$Main$init = function (_n0) {
-	var worldLength = {c: 100, d: 100};
+	var worldLength = {c: 50, d: 50};
 	var updateInterval = 100;
 	var rule = 0;
-	var margin = 10;
-	var density = 30;
-	var colorScheme = {p: '#a9d8f5', q: '#0e190e', r: '#221c30'};
-	var cellLook = {K: 0, h: 5};
+	var margin = 5;
+	var density = 20;
+	var colorScheme = {p: '#a9d8f5', q: '#0e190e', r: '#3a3558'};
+	var cellLook = {K: 1, h: 10};
 	var cell = false;
 	return _Utils_Tuple2(
 		{
@@ -5715,7 +5715,7 @@ var author$project$Main$Reset = function (a) {
 	return {$: 2, a: a};
 };
 var author$project$Main$Circle = 2;
-var author$project$Main$Squircle = 1;
+var author$project$Main$Square = 0;
 var author$project$Main$cellShapeFromString = function (shape) {
 	return (shape === 'Square') ? 0 : ((shape === 'Squircle') ? 1 : ((shape === 'Circle') ? 2 : 0));
 };
@@ -6723,24 +6723,24 @@ var author$project$Main$view = function (model) {
 														_List_fromArray(
 															[
 																elm$html$Html$Attributes$value(
-																author$project$Main$cellShapeToString(0))
+																author$project$Main$cellShapeToString(1))
 															]),
 														_List_fromArray(
 															[
 																elm$html$Html$text(
-																author$project$Main$cellShapeToString(0))
+																author$project$Main$cellShapeToString(1))
 															])),
 														A2(
 														elm$html$Html$option,
 														_List_fromArray(
 															[
 																elm$html$Html$Attributes$value(
-																author$project$Main$cellShapeToString(1))
+																author$project$Main$cellShapeToString(0))
 															]),
 														_List_fromArray(
 															[
 																elm$html$Html$text(
-																author$project$Main$cellShapeToString(1))
+																author$project$Main$cellShapeToString(0))
 															])),
 														A2(
 														elm$html$Html$option,
@@ -6755,70 +6755,6 @@ var author$project$Main$view = function (model) {
 																author$project$Main$cellShapeToString(2))
 															]))
 													]))
-											])),
-										A2(
-										elm$html$Html$li,
-										_List_fromArray(
-											[
-												elm$html$Html$Attributes$class('settings-row')
-											]),
-										_List_fromArray(
-											[
-												A2(
-												elm$html$Html$label,
-												_List_fromArray(
-													[
-														elm$html$Html$Attributes$class('settings-col'),
-														elm$html$Html$Attributes$for('cellsDensity')
-													]),
-												_List_fromArray(
-													[
-														elm$html$Html$text('Cells density (%): ')
-													])),
-												A2(
-												elm$html$Html$input,
-												_List_fromArray(
-													[
-														elm$html$Html$Attributes$class('settings-col form-control'),
-														elm$html$Html$Attributes$type_('text'),
-														elm$html$Html$Attributes$id('cellsDensity'),
-														elm$html$Html$Attributes$value(
-														elm$core$String$fromInt(model.E)),
-														elm$html$Html$Events$onInput(author$project$Main$UpdateDensity)
-													]),
-												_List_Nil)
-											])),
-										A2(
-										elm$html$Html$li,
-										_List_fromArray(
-											[
-												elm$html$Html$Attributes$class('settings-row')
-											]),
-										_List_fromArray(
-											[
-												A2(
-												elm$html$Html$label,
-												_List_fromArray(
-													[
-														elm$html$Html$Attributes$class('settings-col'),
-														elm$html$Html$Attributes$for('cellsMargin')
-													]),
-												_List_fromArray(
-													[
-														elm$html$Html$text('Cells margin (unit): ')
-													])),
-												A2(
-												elm$html$Html$input,
-												_List_fromArray(
-													[
-														elm$html$Html$Attributes$class('settings-col form-control'),
-														elm$html$Html$Attributes$type_('text'),
-														elm$html$Html$Attributes$id('cellsMargin'),
-														elm$html$Html$Attributes$value(
-														elm$core$String$fromInt(model.s)),
-														elm$html$Html$Events$onInput(author$project$Main$UpdateMargin)
-													]),
-												_List_Nil)
 											])),
 										A2(
 										elm$html$Html$li,
@@ -6881,6 +6817,70 @@ var author$project$Main$view = function (model) {
 														elm$html$Html$Attributes$value(
 														elm$core$String$fromInt(model.b.d)),
 														elm$html$Html$Events$onInput(author$project$Main$UpdateWorldYLength)
+													]),
+												_List_Nil)
+											])),
+										A2(
+										elm$html$Html$li,
+										_List_fromArray(
+											[
+												elm$html$Html$Attributes$class('settings-row')
+											]),
+										_List_fromArray(
+											[
+												A2(
+												elm$html$Html$label,
+												_List_fromArray(
+													[
+														elm$html$Html$Attributes$class('settings-col'),
+														elm$html$Html$Attributes$for('randomDensity')
+													]),
+												_List_fromArray(
+													[
+														elm$html$Html$text('Random density (%): ')
+													])),
+												A2(
+												elm$html$Html$input,
+												_List_fromArray(
+													[
+														elm$html$Html$Attributes$class('settings-col form-control'),
+														elm$html$Html$Attributes$type_('text'),
+														elm$html$Html$Attributes$id('randomDensity'),
+														elm$html$Html$Attributes$value(
+														elm$core$String$fromInt(model.E)),
+														elm$html$Html$Events$onInput(author$project$Main$UpdateDensity)
+													]),
+												_List_Nil)
+											])),
+										A2(
+										elm$html$Html$li,
+										_List_fromArray(
+											[
+												elm$html$Html$Attributes$class('settings-row')
+											]),
+										_List_fromArray(
+											[
+												A2(
+												elm$html$Html$label,
+												_List_fromArray(
+													[
+														elm$html$Html$Attributes$class('settings-col'),
+														elm$html$Html$Attributes$for('randomMargin')
+													]),
+												_List_fromArray(
+													[
+														elm$html$Html$text('Random margin (cells): ')
+													])),
+												A2(
+												elm$html$Html$input,
+												_List_fromArray(
+													[
+														elm$html$Html$Attributes$class('settings-col form-control'),
+														elm$html$Html$Attributes$type_('text'),
+														elm$html$Html$Attributes$id('randomMargin'),
+														elm$html$Html$Attributes$value(
+														elm$core$String$fromInt(model.s)),
+														elm$html$Html$Events$onInput(author$project$Main$UpdateMargin)
 													]),
 												_List_Nil)
 											])),

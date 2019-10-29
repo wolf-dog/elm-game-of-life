@@ -100,24 +100,24 @@ init _ =
             100
 
         cellLook =
-            { size = 5
-            , shape = Square
+            { size = 10
+            , shape = Squircle
             }
 
         density =
-            30
+            20
 
         margin =
-            10
+            5
 
         worldLength =
-            { x = 100
-            , y = 100
+            { x = 50
+            , y = 50
             }
 
         colorScheme =
             { alive = "#a9d8f5"
-            , dead = "#221c30"
+            , dead = "#3a3558"
             , background = "#0e190e"
             }
 
@@ -601,45 +601,15 @@ view model =
                             [ Html.text "Cells shape: " ]
                         , Html.select [ onChange cellShapeHandler, Html.Attributes.class "settings-col form-control" ]
                             [ Html.option
-                                [ Html.Attributes.value <| cellShapeToString Square ]
-                                [ Html.text <| cellShapeToString Square ]
-                            , Html.option
                                 [ Html.Attributes.value <| cellShapeToString Squircle ]
                                 [ Html.text <| cellShapeToString Squircle ]
+                            , Html.option
+                                [ Html.Attributes.value <| cellShapeToString Square ]
+                                [ Html.text <| cellShapeToString Square ]
                             , Html.option
                                 [ Html.Attributes.value <| cellShapeToString Circle ]
                                 [ Html.text <| cellShapeToString Circle ]
                             ]
-                        ]
-                    , Html.li [ Html.Attributes.class "settings-row" ]
-                        [ Html.label
-                            [ Html.Attributes.class "settings-col"
-                            , Html.Attributes.for "cellsDensity"
-                            ]
-                            [ Html.text "Cells density (%): " ]
-                        , Html.input
-                            [ Html.Attributes.class "settings-col form-control"
-                            , Html.Attributes.type_ "text"
-                            , Html.Attributes.id "cellsDensity"
-                            , Html.Attributes.value <| String.fromInt model.density
-                            , Html.Events.onInput UpdateDensity
-                            ]
-                            []
-                        ]
-                    , Html.li [ Html.Attributes.class "settings-row" ]
-                        [ Html.label
-                            [ Html.Attributes.class "settings-col"
-                            , Html.Attributes.for "cellsMargin"
-                            ]
-                            [ Html.text "Cells margin (unit): " ]
-                        , Html.input
-                            [ Html.Attributes.class "settings-col form-control"
-                            , Html.Attributes.type_ "text"
-                            , Html.Attributes.id "cellsMargin"
-                            , Html.Attributes.value <| String.fromInt model.margin
-                            , Html.Events.onInput UpdateMargin
-                            ]
-                            []
                         ]
                     , Html.li [ Html.Attributes.class "settings-row" ]
                         [ Html.label
@@ -668,6 +638,36 @@ view model =
                             , Html.Attributes.id "worldYLength"
                             , Html.Attributes.value <| String.fromInt model.worldLength.y
                             , Html.Events.onInput UpdateWorldYLength
+                            ]
+                            []
+                        ]
+                    , Html.li [ Html.Attributes.class "settings-row" ]
+                        [ Html.label
+                            [ Html.Attributes.class "settings-col"
+                            , Html.Attributes.for "randomDensity"
+                            ]
+                            [ Html.text "Random density (%): " ]
+                        , Html.input
+                            [ Html.Attributes.class "settings-col form-control"
+                            , Html.Attributes.type_ "text"
+                            , Html.Attributes.id "randomDensity"
+                            , Html.Attributes.value <| String.fromInt model.density
+                            , Html.Events.onInput UpdateDensity
+                            ]
+                            []
+                        ]
+                    , Html.li [ Html.Attributes.class "settings-row" ]
+                        [ Html.label
+                            [ Html.Attributes.class "settings-col"
+                            , Html.Attributes.for "randomMargin"
+                            ]
+                            [ Html.text "Random margin (cells): " ]
+                        , Html.input
+                            [ Html.Attributes.class "settings-col form-control"
+                            , Html.Attributes.type_ "text"
+                            , Html.Attributes.id "randomMargin"
+                            , Html.Attributes.value <| String.fromInt model.margin
+                            , Html.Events.onInput UpdateMargin
                             ]
                             []
                         ]

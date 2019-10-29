@@ -6436,6 +6436,7 @@ var elm$html$Html$input = _VirtualDom_node('input');
 var elm$html$Html$label = _VirtualDom_node('label');
 var elm$html$Html$li = _VirtualDom_node('li');
 var elm$html$Html$option = _VirtualDom_node('option');
+var elm$html$Html$p = _VirtualDom_node('p');
 var elm$html$Html$select = _VirtualDom_node('select');
 var elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
 var elm$html$Html$text = elm$virtual_dom$VirtualDom$text;
@@ -6630,129 +6631,120 @@ var author$project$Main$view = function (model) {
 										elm$html$Html$li,
 										_List_fromArray(
 											[
-												elm$html$Html$Attributes$class('settings-row')
+												elm$html$Html$Attributes$class('settings-group')
 											]),
 										_List_fromArray(
 											[
 												A2(
-												elm$html$Html$label,
+												elm$html$Html$p,
 												_List_fromArray(
 													[
-														elm$html$Html$Attributes$class('settings-col'),
-														elm$html$Html$Attributes$for('refreshInterval')
+														elm$html$Html$Attributes$class('settings-row settings-header')
 													]),
 												_List_fromArray(
 													[
-														elm$html$Html$text('Refresh interval (ms): ')
+														elm$html$Html$text('Cells')
 													])),
 												A2(
-												elm$html$Html$input,
-												_List_fromArray(
-													[
-														elm$html$Html$Attributes$class('settings-col form-control'),
-														elm$html$Html$Attributes$type_('text'),
-														elm$html$Html$Attributes$id('refreshInterval'),
-														elm$html$Html$Attributes$value(
-														elm$core$String$fromFloat(model.J)),
-														elm$html$Html$Events$onInput(author$project$Main$UpdateRefreshInterval)
-													]),
-												_List_Nil)
-											])),
-										A2(
-										elm$html$Html$li,
-										_List_fromArray(
-											[
-												elm$html$Html$Attributes$class('settings-row')
-											]),
-										_List_fromArray(
-											[
-												A2(
-												elm$html$Html$label,
-												_List_fromArray(
-													[
-														elm$html$Html$Attributes$class('settings-col'),
-														elm$html$Html$Attributes$for('cellSize')
-													]),
-												_List_fromArray(
-													[
-														elm$html$Html$text('Cells size: ')
-													])),
-												A2(
-												elm$html$Html$input,
-												_List_fromArray(
-													[
-														elm$html$Html$Attributes$class('settings-col form-control'),
-														elm$html$Html$Attributes$type_('text'),
-														elm$html$Html$Attributes$id('cellSize'),
-														elm$html$Html$Attributes$value(
-														elm$core$String$fromInt(model.j.h)),
-														elm$html$Html$Events$onInput(author$project$Main$UpdateCellSize)
-													]),
-												_List_Nil)
-											])),
-										A2(
-										elm$html$Html$li,
-										_List_fromArray(
-											[
-												elm$html$Html$Attributes$class('settings-row')
-											]),
-										_List_fromArray(
-											[
-												A2(
-												elm$html$Html$label,
-												_List_fromArray(
-													[
-														elm$html$Html$Attributes$class('settings-col'),
-														elm$html$Html$Attributes$for('cellShape')
-													]),
-												_List_fromArray(
-													[
-														elm$html$Html$text('Cells shape: ')
-													])),
-												A2(
-												elm$html$Html$select,
-												_List_fromArray(
-													[
-														author$project$Main$onChange(cellShapeHandler),
-														elm$html$Html$Attributes$class('settings-col form-control')
-													]),
+												elm$html$Html$ul,
+												_List_Nil,
 												_List_fromArray(
 													[
 														A2(
-														elm$html$Html$option,
+														elm$html$Html$li,
 														_List_fromArray(
 															[
-																elm$html$Html$Attributes$value(
-																author$project$Main$cellShapeToString(1))
+																elm$html$Html$Attributes$class('settings-row')
 															]),
 														_List_fromArray(
 															[
-																elm$html$Html$text(
-																author$project$Main$cellShapeToString(1))
+																A2(
+																elm$html$Html$label,
+																_List_fromArray(
+																	[
+																		elm$html$Html$Attributes$for('cellSize')
+																	]),
+																_List_fromArray(
+																	[
+																		elm$html$Html$text('Size: ')
+																	])),
+																A2(
+																elm$html$Html$input,
+																_List_fromArray(
+																	[
+																		elm$html$Html$Attributes$class('form-control'),
+																		elm$html$Html$Attributes$type_('text'),
+																		elm$html$Html$Attributes$id('cellSize'),
+																		elm$html$Html$Attributes$value(
+																		elm$core$String$fromInt(model.j.h)),
+																		elm$html$Html$Events$onInput(author$project$Main$UpdateCellSize)
+																	]),
+																_List_Nil)
 															])),
 														A2(
-														elm$html$Html$option,
+														elm$html$Html$li,
 														_List_fromArray(
 															[
-																elm$html$Html$Attributes$value(
-																author$project$Main$cellShapeToString(0))
+																elm$html$Html$Attributes$class('settings-row')
 															]),
 														_List_fromArray(
 															[
-																elm$html$Html$text(
-																author$project$Main$cellShapeToString(0))
-															])),
-														A2(
-														elm$html$Html$option,
-														_List_fromArray(
-															[
-																elm$html$Html$Attributes$value(
-																author$project$Main$cellShapeToString(2))
-															]),
-														_List_fromArray(
-															[
-																elm$html$Html$text(
-																author$project$Main$cellShapeToString(2))
+																A2(
+																elm$html$Html$label,
+																_List_fromArray(
+																	[
+																		elm$html$Html$Attributes$for('cellShape')
+																	]),
+																_List_fromArray(
+																	[
+																		elm$html$Html$text('Shape: ')
+																	])),
+																A2(
+																elm$html$Html$select,
+																_List_fromArray(
+																	[
+																		author$project$Main$onChange(cellShapeHandler),
+																		elm$html$Html$Attributes$class('form-control')
+																	]),
+																_List_fromArray(
+																	[
+																		A2(
+																		elm$html$Html$option,
+																		_List_fromArray(
+																			[
+																				elm$html$Html$Attributes$value(
+																				author$project$Main$cellShapeToString(1))
+																			]),
+																		_List_fromArray(
+																			[
+																				elm$html$Html$text(
+																				author$project$Main$cellShapeToString(1))
+																			])),
+																		A2(
+																		elm$html$Html$option,
+																		_List_fromArray(
+																			[
+																				elm$html$Html$Attributes$value(
+																				author$project$Main$cellShapeToString(0))
+																			]),
+																		_List_fromArray(
+																			[
+																				elm$html$Html$text(
+																				author$project$Main$cellShapeToString(0))
+																			])),
+																		A2(
+																		elm$html$Html$option,
+																		_List_fromArray(
+																			[
+																				elm$html$Html$Attributes$value(
+																				author$project$Main$cellShapeToString(2))
+																			]),
+																		_List_fromArray(
+																			[
+																				elm$html$Html$text(
+																				author$project$Main$cellShapeToString(2))
+																			]))
+																	]))
 															]))
 													]))
 											])),
@@ -6760,358 +6752,481 @@ var author$project$Main$view = function (model) {
 										elm$html$Html$li,
 										_List_fromArray(
 											[
-												elm$html$Html$Attributes$class('settings-row')
+												elm$html$Html$Attributes$class('settings-group')
 											]),
 										_List_fromArray(
 											[
 												A2(
-												elm$html$Html$label,
+												elm$html$Html$p,
 												_List_fromArray(
 													[
-														elm$html$Html$Attributes$class('settings-col'),
-														elm$html$Html$Attributes$for('worldXLength')
+														elm$html$Html$Attributes$class('settings-row settings-header')
 													]),
 												_List_fromArray(
 													[
-														elm$html$Html$text('World length x: ')
+														elm$html$Html$text('World')
 													])),
 												A2(
-												elm$html$Html$input,
+												elm$html$Html$ul,
+												_List_Nil,
 												_List_fromArray(
 													[
-														elm$html$Html$Attributes$class('settings-col form-control'),
-														elm$html$Html$Attributes$type_('text'),
-														elm$html$Html$Attributes$id('worldXLength'),
-														elm$html$Html$Attributes$value(
-														elm$core$String$fromInt(model.b.c)),
-														elm$html$Html$Events$onInput(author$project$Main$UpdateWorldXLength)
-													]),
-												_List_Nil)
+														A2(
+														elm$html$Html$li,
+														_List_fromArray(
+															[
+																elm$html$Html$Attributes$class('settings-row')
+															]),
+														_List_fromArray(
+															[
+																A2(
+																elm$html$Html$label,
+																_List_fromArray(
+																	[
+																		elm$html$Html$Attributes$for('worldXLength')
+																	]),
+																_List_fromArray(
+																	[
+																		elm$html$Html$text('Length X: ')
+																	])),
+																A2(
+																elm$html$Html$input,
+																_List_fromArray(
+																	[
+																		elm$html$Html$Attributes$class('form-control'),
+																		elm$html$Html$Attributes$type_('text'),
+																		elm$html$Html$Attributes$id('worldXLength'),
+																		elm$html$Html$Attributes$value(
+																		elm$core$String$fromInt(model.b.c)),
+																		elm$html$Html$Events$onInput(author$project$Main$UpdateWorldXLength)
+																	]),
+																_List_Nil)
+															])),
+														A2(
+														elm$html$Html$li,
+														_List_fromArray(
+															[
+																elm$html$Html$Attributes$class('settings-row')
+															]),
+														_List_fromArray(
+															[
+																A2(
+																elm$html$Html$label,
+																_List_fromArray(
+																	[
+																		elm$html$Html$Attributes$for('worldYLength')
+																	]),
+																_List_fromArray(
+																	[
+																		elm$html$Html$text('Length Y: ')
+																	])),
+																A2(
+																elm$html$Html$input,
+																_List_fromArray(
+																	[
+																		elm$html$Html$Attributes$class('form-control'),
+																		elm$html$Html$Attributes$type_('text'),
+																		elm$html$Html$Attributes$id('worldYLength'),
+																		elm$html$Html$Attributes$value(
+																		elm$core$String$fromInt(model.b.d)),
+																		elm$html$Html$Events$onInput(author$project$Main$UpdateWorldYLength)
+																	]),
+																_List_Nil)
+															]))
+													]))
 											])),
 										A2(
 										elm$html$Html$li,
 										_List_fromArray(
 											[
-												elm$html$Html$Attributes$class('settings-row')
+												elm$html$Html$Attributes$class('settings-group')
 											]),
 										_List_fromArray(
 											[
 												A2(
-												elm$html$Html$label,
+												elm$html$Html$p,
 												_List_fromArray(
 													[
-														elm$html$Html$Attributes$class('settings-col'),
-														elm$html$Html$Attributes$for('worldYLength')
+														elm$html$Html$Attributes$class('settings-row settings-header')
 													]),
 												_List_fromArray(
 													[
-														elm$html$Html$text('World length y: ')
+														elm$html$Html$text('Random')
 													])),
 												A2(
-												elm$html$Html$input,
+												elm$html$Html$ul,
+												_List_Nil,
 												_List_fromArray(
 													[
-														elm$html$Html$Attributes$class('settings-col form-control'),
-														elm$html$Html$Attributes$type_('text'),
-														elm$html$Html$Attributes$id('worldYLength'),
-														elm$html$Html$Attributes$value(
-														elm$core$String$fromInt(model.b.d)),
-														elm$html$Html$Events$onInput(author$project$Main$UpdateWorldYLength)
-													]),
-												_List_Nil)
+														A2(
+														elm$html$Html$li,
+														_List_fromArray(
+															[
+																elm$html$Html$Attributes$class('settings-row')
+															]),
+														_List_fromArray(
+															[
+																A2(
+																elm$html$Html$label,
+																_List_fromArray(
+																	[
+																		elm$html$Html$Attributes$for('randomDensity')
+																	]),
+																_List_fromArray(
+																	[
+																		elm$html$Html$text('Density (%): ')
+																	])),
+																A2(
+																elm$html$Html$input,
+																_List_fromArray(
+																	[
+																		elm$html$Html$Attributes$class('form-control'),
+																		elm$html$Html$Attributes$type_('text'),
+																		elm$html$Html$Attributes$id('randomDensity'),
+																		elm$html$Html$Attributes$value(
+																		elm$core$String$fromInt(model.E)),
+																		elm$html$Html$Events$onInput(author$project$Main$UpdateDensity)
+																	]),
+																_List_Nil)
+															])),
+														A2(
+														elm$html$Html$li,
+														_List_fromArray(
+															[
+																elm$html$Html$Attributes$class('settings-row')
+															]),
+														_List_fromArray(
+															[
+																A2(
+																elm$html$Html$label,
+																_List_fromArray(
+																	[
+																		elm$html$Html$Attributes$for('randomMargin')
+																	]),
+																_List_fromArray(
+																	[
+																		elm$html$Html$text('Margin (cells): ')
+																	])),
+																A2(
+																elm$html$Html$input,
+																_List_fromArray(
+																	[
+																		elm$html$Html$Attributes$class('form-control'),
+																		elm$html$Html$Attributes$type_('text'),
+																		elm$html$Html$Attributes$id('randomMargin'),
+																		elm$html$Html$Attributes$value(
+																		elm$core$String$fromInt(model.s)),
+																		elm$html$Html$Events$onInput(author$project$Main$UpdateMargin)
+																	]),
+																_List_Nil)
+															]))
+													]))
 											])),
 										A2(
 										elm$html$Html$li,
 										_List_fromArray(
 											[
-												elm$html$Html$Attributes$class('settings-row')
+												elm$html$Html$Attributes$class('settings-group')
 											]),
 										_List_fromArray(
 											[
 												A2(
-												elm$html$Html$label,
+												elm$html$Html$p,
 												_List_fromArray(
 													[
-														elm$html$Html$Attributes$class('settings-col'),
-														elm$html$Html$Attributes$for('randomDensity')
+														elm$html$Html$Attributes$class('settings-row settings-header')
 													]),
 												_List_fromArray(
 													[
-														elm$html$Html$text('Random density (%): ')
+														elm$html$Html$text('General')
 													])),
 												A2(
-												elm$html$Html$input,
+												elm$html$Html$ul,
+												_List_Nil,
 												_List_fromArray(
 													[
-														elm$html$Html$Attributes$class('settings-col form-control'),
-														elm$html$Html$Attributes$type_('text'),
-														elm$html$Html$Attributes$id('randomDensity'),
-														elm$html$Html$Attributes$value(
-														elm$core$String$fromInt(model.E)),
-														elm$html$Html$Events$onInput(author$project$Main$UpdateDensity)
-													]),
-												_List_Nil)
+														A2(
+														elm$html$Html$li,
+														_List_fromArray(
+															[
+																elm$html$Html$Attributes$class('settings-row')
+															]),
+														_List_fromArray(
+															[
+																A2(
+																elm$html$Html$label,
+																_List_fromArray(
+																	[
+																		elm$html$Html$Attributes$for('refreshInterval')
+																	]),
+																_List_fromArray(
+																	[
+																		elm$html$Html$text('Refresh interval (ms): ')
+																	])),
+																A2(
+																elm$html$Html$input,
+																_List_fromArray(
+																	[
+																		elm$html$Html$Attributes$class('form-control'),
+																		elm$html$Html$Attributes$type_('text'),
+																		elm$html$Html$Attributes$id('refreshInterval'),
+																		elm$html$Html$Attributes$value(
+																		elm$core$String$fromFloat(model.J)),
+																		elm$html$Html$Events$onInput(author$project$Main$UpdateRefreshInterval)
+																	]),
+																_List_Nil)
+															])),
+														A2(
+														elm$html$Html$li,
+														_List_fromArray(
+															[
+																elm$html$Html$Attributes$class('settings-row')
+															]),
+														_List_fromArray(
+															[
+																A2(
+																elm$html$Html$label,
+																_List_fromArray(
+																	[
+																		elm$html$Html$Attributes$for('cellRule')
+																	]),
+																_List_fromArray(
+																	[
+																		elm$html$Html$text('Rule: ')
+																	])),
+																A2(
+																elm$html$Html$select,
+																_List_fromArray(
+																	[
+																		author$project$Main$onChange(ruleHandler),
+																		elm$html$Html$Attributes$class('form-control')
+																	]),
+																_List_fromArray(
+																	[
+																		A2(
+																		elm$html$Html$option,
+																		_List_fromArray(
+																			[
+																				elm$html$Html$Attributes$value(
+																				author$project$Cell$ruleToString(0))
+																			]),
+																		_List_fromArray(
+																			[
+																				elm$html$Html$text(
+																				author$project$Cell$ruleToString(0))
+																			])),
+																		A2(
+																		elm$html$Html$option,
+																		_List_fromArray(
+																			[
+																				elm$html$Html$Attributes$value(
+																				author$project$Cell$ruleToString(1))
+																			]),
+																		_List_fromArray(
+																			[
+																				elm$html$Html$text(
+																				author$project$Cell$ruleToString(1))
+																			])),
+																		A2(
+																		elm$html$Html$option,
+																		_List_fromArray(
+																			[
+																				elm$html$Html$Attributes$value(
+																				author$project$Cell$ruleToString(2))
+																			]),
+																		_List_fromArray(
+																			[
+																				elm$html$Html$text(
+																				author$project$Cell$ruleToString(2))
+																			])),
+																		A2(
+																		elm$html$Html$option,
+																		_List_fromArray(
+																			[
+																				elm$html$Html$Attributes$value(
+																				author$project$Cell$ruleToString(3))
+																			]),
+																		_List_fromArray(
+																			[
+																				elm$html$Html$text(
+																				author$project$Cell$ruleToString(3))
+																			])),
+																		A2(
+																		elm$html$Html$option,
+																		_List_fromArray(
+																			[
+																				elm$html$Html$Attributes$value(
+																				author$project$Cell$ruleToString(4))
+																			]),
+																		_List_fromArray(
+																			[
+																				elm$html$Html$text(
+																				author$project$Cell$ruleToString(4))
+																			])),
+																		A2(
+																		elm$html$Html$option,
+																		_List_fromArray(
+																			[
+																				elm$html$Html$Attributes$value(
+																				author$project$Cell$ruleToString(5))
+																			]),
+																		_List_fromArray(
+																			[
+																				elm$html$Html$text(
+																				author$project$Cell$ruleToString(5))
+																			])),
+																		A2(
+																		elm$html$Html$option,
+																		_List_fromArray(
+																			[
+																				elm$html$Html$Attributes$value(
+																				author$project$Cell$ruleToString(6))
+																			]),
+																		_List_fromArray(
+																			[
+																				elm$html$Html$text(
+																				author$project$Cell$ruleToString(6))
+																			])),
+																		A2(
+																		elm$html$Html$option,
+																		_List_fromArray(
+																			[
+																				elm$html$Html$Attributes$value(
+																				author$project$Cell$ruleToString(7))
+																			]),
+																		_List_fromArray(
+																			[
+																				elm$html$Html$text(
+																				author$project$Cell$ruleToString(7))
+																			])),
+																		A2(
+																		elm$html$Html$option,
+																		_List_fromArray(
+																			[
+																				elm$html$Html$Attributes$value(
+																				author$project$Cell$ruleToString(8))
+																			]),
+																		_List_fromArray(
+																			[
+																				elm$html$Html$text(
+																				author$project$Cell$ruleToString(8))
+																			]))
+																	]))
+															]))
+													]))
 											])),
 										A2(
 										elm$html$Html$li,
 										_List_fromArray(
 											[
-												elm$html$Html$Attributes$class('settings-row')
+												elm$html$Html$Attributes$class('settings-group')
 											]),
 										_List_fromArray(
 											[
 												A2(
-												elm$html$Html$label,
+												elm$html$Html$p,
 												_List_fromArray(
 													[
-														elm$html$Html$Attributes$class('settings-col'),
-														elm$html$Html$Attributes$for('randomMargin')
+														elm$html$Html$Attributes$class('settings-row settings-header')
 													]),
 												_List_fromArray(
 													[
-														elm$html$Html$text('Random margin (cells): ')
+														elm$html$Html$text('Colorscheme')
 													])),
 												A2(
-												elm$html$Html$input,
-												_List_fromArray(
-													[
-														elm$html$Html$Attributes$class('settings-col form-control'),
-														elm$html$Html$Attributes$type_('text'),
-														elm$html$Html$Attributes$id('randomMargin'),
-														elm$html$Html$Attributes$value(
-														elm$core$String$fromInt(model.s)),
-														elm$html$Html$Events$onInput(author$project$Main$UpdateMargin)
-													]),
-												_List_Nil)
-											])),
-										A2(
-										elm$html$Html$li,
-										_List_fromArray(
-											[
-												elm$html$Html$Attributes$class('settings-row')
-											]),
-										_List_fromArray(
-											[
-												A2(
-												elm$html$Html$label,
-												_List_fromArray(
-													[
-														elm$html$Html$Attributes$class('settings-col'),
-														elm$html$Html$Attributes$for('colorSchemeAlive')
-													]),
-												_List_fromArray(
-													[
-														elm$html$Html$text('Alive cells color: ')
-													])),
-												A2(
-												elm$html$Html$input,
-												_List_fromArray(
-													[
-														elm$html$Html$Attributes$class('settings-col form-control'),
-														elm$html$Html$Attributes$type_('color'),
-														elm$html$Html$Attributes$id('colorSchemeAlive'),
-														elm$html$Html$Attributes$value(model.i.p),
-														elm$html$Html$Events$onInput(author$project$Main$UpdateColorSchemeAlive)
-													]),
-												_List_Nil)
-											])),
-										A2(
-										elm$html$Html$li,
-										_List_fromArray(
-											[
-												elm$html$Html$Attributes$class('settings-row')
-											]),
-										_List_fromArray(
-											[
-												A2(
-												elm$html$Html$label,
-												_List_fromArray(
-													[
-														elm$html$Html$Attributes$class('settings-col'),
-														elm$html$Html$Attributes$for('colorSchemeDead')
-													]),
-												_List_fromArray(
-													[
-														elm$html$Html$text('Dead cells color: ')
-													])),
-												A2(
-												elm$html$Html$input,
-												_List_fromArray(
-													[
-														elm$html$Html$Attributes$class('settings-col form-control'),
-														elm$html$Html$Attributes$type_('color'),
-														elm$html$Html$Attributes$id('colorSchemeDead'),
-														elm$html$Html$Attributes$value(model.i.r),
-														elm$html$Html$Events$onInput(author$project$Main$UpdateColorSchemeDead)
-													]),
-												_List_Nil)
-											])),
-										A2(
-										elm$html$Html$li,
-										_List_fromArray(
-											[
-												elm$html$Html$Attributes$class('settings-row')
-											]),
-										_List_fromArray(
-											[
-												A2(
-												elm$html$Html$label,
-												_List_fromArray(
-													[
-														elm$html$Html$Attributes$class('settings-col'),
-														elm$html$Html$Attributes$for('colorSchemeBackground')
-													]),
-												_List_fromArray(
-													[
-														elm$html$Html$text('Background: ')
-													])),
-												A2(
-												elm$html$Html$input,
-												_List_fromArray(
-													[
-														elm$html$Html$Attributes$class('settings-col form-control'),
-														elm$html$Html$Attributes$type_('color'),
-														elm$html$Html$Attributes$id('colorSchemeBackground'),
-														elm$html$Html$Attributes$value(model.i.q),
-														elm$html$Html$Events$onInput(author$project$Main$UpdateColorSchemeBackground)
-													]),
-												_List_Nil)
-											])),
-										A2(
-										elm$html$Html$li,
-										_List_fromArray(
-											[
-												elm$html$Html$Attributes$class('settings-row')
-											]),
-										_List_fromArray(
-											[
-												A2(
-												elm$html$Html$label,
-												_List_fromArray(
-													[
-														elm$html$Html$Attributes$class('settings-col'),
-														elm$html$Html$Attributes$for('cellRule')
-													]),
-												_List_fromArray(
-													[
-														elm$html$Html$text('Rule: ')
-													])),
-												A2(
-												elm$html$Html$select,
-												_List_fromArray(
-													[
-														author$project$Main$onChange(ruleHandler),
-														elm$html$Html$Attributes$class('settings-col form-control')
-													]),
+												elm$html$Html$ul,
+												_List_Nil,
 												_List_fromArray(
 													[
 														A2(
-														elm$html$Html$option,
+														elm$html$Html$li,
 														_List_fromArray(
 															[
-																elm$html$Html$Attributes$value(
-																author$project$Cell$ruleToString(0))
+																elm$html$Html$Attributes$class('settings-row')
 															]),
 														_List_fromArray(
 															[
-																elm$html$Html$text(
-																author$project$Cell$ruleToString(0))
+																A2(
+																elm$html$Html$label,
+																_List_fromArray(
+																	[
+																		elm$html$Html$Attributes$for('colorSchemeAlive')
+																	]),
+																_List_fromArray(
+																	[
+																		elm$html$Html$text('Alive cells color: ')
+																	])),
+																A2(
+																elm$html$Html$input,
+																_List_fromArray(
+																	[
+																		elm$html$Html$Attributes$class('form-control'),
+																		elm$html$Html$Attributes$type_('color'),
+																		elm$html$Html$Attributes$id('colorSchemeAlive'),
+																		elm$html$Html$Attributes$value(model.i.p),
+																		elm$html$Html$Events$onInput(author$project$Main$UpdateColorSchemeAlive)
+																	]),
+																_List_Nil)
 															])),
 														A2(
-														elm$html$Html$option,
+														elm$html$Html$li,
 														_List_fromArray(
 															[
-																elm$html$Html$Attributes$value(
-																author$project$Cell$ruleToString(1))
+																elm$html$Html$Attributes$class('settings-row')
 															]),
 														_List_fromArray(
 															[
-																elm$html$Html$text(
-																author$project$Cell$ruleToString(1))
+																A2(
+																elm$html$Html$label,
+																_List_fromArray(
+																	[
+																		elm$html$Html$Attributes$for('colorSchemeDead')
+																	]),
+																_List_fromArray(
+																	[
+																		elm$html$Html$text('Dead cells color: ')
+																	])),
+																A2(
+																elm$html$Html$input,
+																_List_fromArray(
+																	[
+																		elm$html$Html$Attributes$class('form-control'),
+																		elm$html$Html$Attributes$type_('color'),
+																		elm$html$Html$Attributes$id('colorSchemeDead'),
+																		elm$html$Html$Attributes$value(model.i.r),
+																		elm$html$Html$Events$onInput(author$project$Main$UpdateColorSchemeDead)
+																	]),
+																_List_Nil)
 															])),
 														A2(
-														elm$html$Html$option,
+														elm$html$Html$li,
 														_List_fromArray(
 															[
-																elm$html$Html$Attributes$value(
-																author$project$Cell$ruleToString(2))
+																elm$html$Html$Attributes$class('settings-row')
 															]),
 														_List_fromArray(
 															[
-																elm$html$Html$text(
-																author$project$Cell$ruleToString(2))
-															])),
-														A2(
-														elm$html$Html$option,
-														_List_fromArray(
-															[
-																elm$html$Html$Attributes$value(
-																author$project$Cell$ruleToString(3))
-															]),
-														_List_fromArray(
-															[
-																elm$html$Html$text(
-																author$project$Cell$ruleToString(3))
-															])),
-														A2(
-														elm$html$Html$option,
-														_List_fromArray(
-															[
-																elm$html$Html$Attributes$value(
-																author$project$Cell$ruleToString(4))
-															]),
-														_List_fromArray(
-															[
-																elm$html$Html$text(
-																author$project$Cell$ruleToString(4))
-															])),
-														A2(
-														elm$html$Html$option,
-														_List_fromArray(
-															[
-																elm$html$Html$Attributes$value(
-																author$project$Cell$ruleToString(5))
-															]),
-														_List_fromArray(
-															[
-																elm$html$Html$text(
-																author$project$Cell$ruleToString(5))
-															])),
-														A2(
-														elm$html$Html$option,
-														_List_fromArray(
-															[
-																elm$html$Html$Attributes$value(
-																author$project$Cell$ruleToString(6))
-															]),
-														_List_fromArray(
-															[
-																elm$html$Html$text(
-																author$project$Cell$ruleToString(6))
-															])),
-														A2(
-														elm$html$Html$option,
-														_List_fromArray(
-															[
-																elm$html$Html$Attributes$value(
-																author$project$Cell$ruleToString(7))
-															]),
-														_List_fromArray(
-															[
-																elm$html$Html$text(
-																author$project$Cell$ruleToString(7))
-															])),
-														A2(
-														elm$html$Html$option,
-														_List_fromArray(
-															[
-																elm$html$Html$Attributes$value(
-																author$project$Cell$ruleToString(8))
-															]),
-														_List_fromArray(
-															[
-																elm$html$Html$text(
-																author$project$Cell$ruleToString(8))
+																A2(
+																elm$html$Html$label,
+																_List_fromArray(
+																	[
+																		elm$html$Html$Attributes$for('colorSchemeBackground')
+																	]),
+																_List_fromArray(
+																	[
+																		elm$html$Html$text('Background color: ')
+																	])),
+																A2(
+																elm$html$Html$input,
+																_List_fromArray(
+																	[
+																		elm$html$Html$Attributes$class('form-control'),
+																		elm$html$Html$Attributes$type_('color'),
+																		elm$html$Html$Attributes$id('colorSchemeBackground'),
+																		elm$html$Html$Attributes$value(model.i.q),
+																		elm$html$Html$Events$onInput(author$project$Main$UpdateColorSchemeBackground)
+																	]),
+																_List_Nil)
 															]))
 													]))
 											]))

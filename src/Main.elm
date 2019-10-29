@@ -563,193 +563,211 @@ view model =
                     [ Html.text "Settings" ]
                 , Html.ul
                     [ Html.Attributes.class <| "form-group settings" ++ toggleSettings model.isSettingsCollapsed ]
-                    [ Html.li [ Html.Attributes.class "settings-row" ]
-                        [ Html.label
-                            [ Html.Attributes.class "settings-col"
-                            , Html.Attributes.for "refreshInterval"
+                    [ Html.li [ Html.Attributes.class "settings-group" ]
+                        [ Html.p [ Html.Attributes.class "settings-row settings-header" ]
+                            [
+                                Html.text "Cells"
                             ]
-                            [ Html.text "Refresh interval (ms): " ]
-                        , Html.input
-                            [ Html.Attributes.class "settings-col form-control"
-                            , Html.Attributes.type_ "text"
-                            , Html.Attributes.id "refreshInterval"
-                            , Html.Attributes.value <| String.fromFloat model.refreshInterval
-                            , Html.Events.onInput UpdateRefreshInterval
-                            ]
-                            []
-                        ]
-                    , Html.li [ Html.Attributes.class "settings-row" ]
-                        [ Html.label
-                            [ Html.Attributes.class "settings-col"
-                            , Html.Attributes.for "cellSize"
-                            ]
-                            [ Html.text "Cells size: " ]
-                        , Html.input
-                            [ Html.Attributes.class "settings-col form-control"
-                            , Html.Attributes.type_ "text"
-                            , Html.Attributes.id "cellSize"
-                            , Html.Attributes.value <| String.fromInt model.cellLook.size
-                            , Html.Events.onInput UpdateCellSize
-                            ]
-                            []
-                        ]
-                    , Html.li [ Html.Attributes.class "settings-row" ]
-                        [ Html.label
-                            [ Html.Attributes.class "settings-col"
-                            , Html.Attributes.for "cellShape"
-                            ]
-                            [ Html.text "Cells shape: " ]
-                        , Html.select [ onChange cellShapeHandler, Html.Attributes.class "settings-col form-control" ]
-                            [ Html.option
-                                [ Html.Attributes.value <| cellShapeToString Squircle ]
-                                [ Html.text <| cellShapeToString Squircle ]
-                            , Html.option
-                                [ Html.Attributes.value <| cellShapeToString Square ]
-                                [ Html.text <| cellShapeToString Square ]
-                            , Html.option
-                                [ Html.Attributes.value <| cellShapeToString Circle ]
-                                [ Html.text <| cellShapeToString Circle ]
+                        , Html.ul []
+                            [ Html.li [ Html.Attributes.class "settings-row" ]
+                                [ Html.label
+                                    [ Html.Attributes.for "cellSize" ]
+                                    [ Html.text "Size: " ]
+                                , Html.input
+                                    [ Html.Attributes.class "form-control"
+                                    , Html.Attributes.type_ "text"
+                                    , Html.Attributes.id "cellSize"
+                                    , Html.Attributes.value <| String.fromInt model.cellLook.size
+                                    , Html.Events.onInput UpdateCellSize
+                                    ]
+                                    []
+                                ]
+                            , Html.li [ Html.Attributes.class "settings-row" ]
+                                [ Html.label
+                                    [ Html.Attributes.for "cellShape" ]
+                                    [ Html.text "Shape: " ]
+                                , Html.select [ onChange cellShapeHandler, Html.Attributes.class "form-control" ]
+                                    [ Html.option
+                                        [ Html.Attributes.value <| cellShapeToString Squircle ]
+                                        [ Html.text <| cellShapeToString Squircle ]
+                                    , Html.option
+                                        [ Html.Attributes.value <| cellShapeToString Square ]
+                                        [ Html.text <| cellShapeToString Square ]
+                                    , Html.option
+                                        [ Html.Attributes.value <| cellShapeToString Circle ]
+                                        [ Html.text <| cellShapeToString Circle ]
+                                    ]
+                                ]
                             ]
                         ]
-                    , Html.li [ Html.Attributes.class "settings-row" ]
-                        [ Html.label
-                            [ Html.Attributes.class "settings-col"
-                            , Html.Attributes.for "worldXLength"
+                    , Html.li [ Html.Attributes.class "settings-group" ]
+                        [ Html.p [ Html.Attributes.class "settings-row settings-header" ]
+                            [
+                                Html.text "World"
                             ]
-                            [ Html.text "World length x: " ]
-                        , Html.input
-                            [ Html.Attributes.class "settings-col form-control"
-                            , Html.Attributes.type_ "text"
-                            , Html.Attributes.id "worldXLength"
-                            , Html.Attributes.value <| String.fromInt model.worldLength.x
-                            , Html.Events.onInput UpdateWorldXLength
+                        , Html.ul []
+                            [ Html.li [ Html.Attributes.class "settings-row" ]
+                                [ Html.label
+                                    [ Html.Attributes.for "worldXLength" ]
+                                    [ Html.text "Length X: " ]
+                                , Html.input
+                                    [ Html.Attributes.class "form-control"
+                                    , Html.Attributes.type_ "text"
+                                    , Html.Attributes.id "worldXLength"
+                                    , Html.Attributes.value <| String.fromInt model.worldLength.x
+                                    , Html.Events.onInput UpdateWorldXLength
+                                    ]
+                                    []
+                                ]
+                            , Html.li [ Html.Attributes.class "settings-row" ]
+                                [ Html.label
+                                    [ Html.Attributes.for "worldYLength" ]
+                                    [ Html.text "Length Y: " ]
+                                , Html.input
+                                    [ Html.Attributes.class "form-control"
+                                    , Html.Attributes.type_ "text"
+                                    , Html.Attributes.id "worldYLength"
+                                    , Html.Attributes.value <| String.fromInt model.worldLength.y
+                                    , Html.Events.onInput UpdateWorldYLength
+                                    ]
+                                    []
+                                ]
                             ]
-                            []
                         ]
-                    , Html.li [ Html.Attributes.class "settings-row" ]
-                        [ Html.label
-                            [ Html.Attributes.class "settings-col"
-                            , Html.Attributes.for "worldYLength"
+                    , Html.li [ Html.Attributes.class "settings-group" ]
+                        [ Html.p [ Html.Attributes.class "settings-row settings-header" ]
+                            [
+                                Html.text "Random"
                             ]
-                            [ Html.text "World length y: " ]
-                        , Html.input
-                            [ Html.Attributes.class "settings-col form-control"
-                            , Html.Attributes.type_ "text"
-                            , Html.Attributes.id "worldYLength"
-                            , Html.Attributes.value <| String.fromInt model.worldLength.y
-                            , Html.Events.onInput UpdateWorldYLength
+                        , Html.ul []
+                            [ Html.li [ Html.Attributes.class "settings-row" ]
+                                [ Html.label
+                                    [ Html.Attributes.for "randomDensity" ]
+                                    [ Html.text "Density (%): " ]
+                                , Html.input
+                                    [ Html.Attributes.class "form-control"
+                                    , Html.Attributes.type_ "text"
+                                    , Html.Attributes.id "randomDensity"
+                                    , Html.Attributes.value <| String.fromInt model.density
+                                    , Html.Events.onInput UpdateDensity
+                                    ]
+                                    []
+                                ]
+                            , Html.li [ Html.Attributes.class "settings-row" ]
+                                [ Html.label
+                                    [ Html.Attributes.for "randomMargin" ]
+                                    [ Html.text "Margin (cells): " ]
+                                , Html.input
+                                    [ Html.Attributes.class "form-control"
+                                    , Html.Attributes.type_ "text"
+                                    , Html.Attributes.id "randomMargin"
+                                    , Html.Attributes.value <| String.fromInt model.margin
+                                    , Html.Events.onInput UpdateMargin
+                                    ]
+                                    []
+                                ]
                             ]
-                            []
                         ]
-                    , Html.li [ Html.Attributes.class "settings-row" ]
-                        [ Html.label
-                            [ Html.Attributes.class "settings-col"
-                            , Html.Attributes.for "randomDensity"
+                    , Html.li [ Html.Attributes.class "settings-group" ]
+                        [ Html.p [ Html.Attributes.class "settings-row settings-header" ]
+                            [
+                                Html.text "General"
                             ]
-                            [ Html.text "Random density (%): " ]
-                        , Html.input
-                            [ Html.Attributes.class "settings-col form-control"
-                            , Html.Attributes.type_ "text"
-                            , Html.Attributes.id "randomDensity"
-                            , Html.Attributes.value <| String.fromInt model.density
-                            , Html.Events.onInput UpdateDensity
+                        , Html.ul []
+                            [ Html.li [ Html.Attributes.class "settings-row" ]
+                                [ Html.label
+                                    [ Html.Attributes.for "refreshInterval" ]
+                                    [ Html.text "Refresh interval (ms): " ]
+                                , Html.input
+                                    [ Html.Attributes.class "form-control"
+                                    , Html.Attributes.type_ "text"
+                                    , Html.Attributes.id "refreshInterval"
+                                    , Html.Attributes.value <| String.fromFloat model.refreshInterval
+                                    , Html.Events.onInput UpdateRefreshInterval
+                                    ]
+                                    []
+                                ]
+                            , Html.li [ Html.Attributes.class "settings-row" ]
+                                [ Html.label
+                                    [ Html.Attributes.for "cellRule" ]
+                                    [ Html.text "Rule: " ]
+                                , Html.select [ onChange ruleHandler, Html.Attributes.class "form-control" ]
+                                    [ Html.option
+                                        [ Html.Attributes.value <| Cell.ruleToString Cell.Life ]
+                                        [ Html.text <| Cell.ruleToString Cell.Life ]
+                                    , Html.option
+                                        [ Html.Attributes.value <| Cell.ruleToString Cell.DayAndNight ]
+                                        [ Html.text <| Cell.ruleToString Cell.DayAndNight ]
+                                    , Html.option
+                                        [ Html.Attributes.value <| Cell.ruleToString Cell.Flock ]
+                                        [ Html.text <| Cell.ruleToString Cell.Flock ]
+                                    , Html.option
+                                        [ Html.Attributes.value <| Cell.ruleToString Cell.HighLife ]
+                                        [ Html.text <| Cell.ruleToString Cell.HighLife ]
+                                    , Html.option
+                                        [ Html.Attributes.value <| Cell.ruleToString Cell.LongLife ]
+                                        [ Html.text <| Cell.ruleToString Cell.LongLife ]
+                                    , Html.option
+                                        [ Html.Attributes.value <| Cell.ruleToString Cell.Maze ]
+                                        [ Html.text <| Cell.ruleToString Cell.Maze ]
+                                    , Html.option
+                                        [ Html.Attributes.value <| Cell.ruleToString Cell.Move ]
+                                        [ Html.text <| Cell.ruleToString Cell.Move ]
+                                    , Html.option
+                                        [ Html.Attributes.value <| Cell.ruleToString Cell.Seeds ]
+                                        [ Html.text <| Cell.ruleToString Cell.Seeds ]
+                                    , Html.option
+                                        [ Html.Attributes.value <| Cell.ruleToString Cell.TwoXTwo ]
+                                        [ Html.text <| Cell.ruleToString Cell.TwoXTwo ]
+                                    ]
+                                ]
                             ]
-                            []
                         ]
-                    , Html.li [ Html.Attributes.class "settings-row" ]
-                        [ Html.label
-                            [ Html.Attributes.class "settings-col"
-                            , Html.Attributes.for "randomMargin"
+                    , Html.li [ Html.Attributes.class "settings-group" ]
+                        [ Html.p [ Html.Attributes.class "settings-row settings-header" ]
+                            [
+                                Html.text "Colorscheme"
                             ]
-                            [ Html.text "Random margin (cells): " ]
-                        , Html.input
-                            [ Html.Attributes.class "settings-col form-control"
-                            , Html.Attributes.type_ "text"
-                            , Html.Attributes.id "randomMargin"
-                            , Html.Attributes.value <| String.fromInt model.margin
-                            , Html.Events.onInput UpdateMargin
-                            ]
-                            []
-                        ]
-                    , Html.li [ Html.Attributes.class "settings-row" ]
-                        [ Html.label
-                            [ Html.Attributes.class "settings-col"
-                            , Html.Attributes.for "colorSchemeAlive"
-                            ]
-                            [ Html.text "Alive cells color: " ]
-                        , Html.input
-                            [ Html.Attributes.class "settings-col form-control"
-                            , Html.Attributes.type_ "color"
-                            , Html.Attributes.id "colorSchemeAlive"
-                            , Html.Attributes.value model.colorScheme.alive
-                            , Html.Events.onInput UpdateColorSchemeAlive
-                            ]
-                            []
-                        ]
-                    , Html.li [ Html.Attributes.class "settings-row" ]
-                        [ Html.label
-                            [ Html.Attributes.class "settings-col"
-                            , Html.Attributes.for "colorSchemeDead"
-                            ]
-                            [ Html.text "Dead cells color: " ]
-                        , Html.input
-                            [ Html.Attributes.class "settings-col form-control"
-                            , Html.Attributes.type_ "color"
-                            , Html.Attributes.id "colorSchemeDead"
-                            , Html.Attributes.value model.colorScheme.dead
-                            , Html.Events.onInput UpdateColorSchemeDead
-                            ]
-                            []
-                        ]
-                    , Html.li [ Html.Attributes.class "settings-row" ]
-                        [ Html.label
-                            [ Html.Attributes.class "settings-col"
-                            , Html.Attributes.for "colorSchemeBackground"
-                            ]
-                            [ Html.text "Background: " ]
-                        , Html.input
-                            [ Html.Attributes.class "settings-col form-control"
-                            , Html.Attributes.type_ "color"
-                            , Html.Attributes.id "colorSchemeBackground"
-                            , Html.Attributes.value model.colorScheme.background
-                            , Html.Events.onInput UpdateColorSchemeBackground
-                            ]
-                            []
-                        ]
-                    , Html.li [ Html.Attributes.class "settings-row" ]
-                        [ Html.label
-                            [ Html.Attributes.class "settings-col"
-                            , Html.Attributes.for "cellRule"
-                            ]
-                            [ Html.text "Rule: " ]
-                        , Html.select [ onChange ruleHandler, Html.Attributes.class "settings-col form-control" ]
-                            [ Html.option
-                                [ Html.Attributes.value <| Cell.ruleToString Cell.Life ]
-                                [ Html.text <| Cell.ruleToString Cell.Life ]
-                            , Html.option
-                                [ Html.Attributes.value <| Cell.ruleToString Cell.DayAndNight ]
-                                [ Html.text <| Cell.ruleToString Cell.DayAndNight ]
-                            , Html.option
-                                [ Html.Attributes.value <| Cell.ruleToString Cell.Flock ]
-                                [ Html.text <| Cell.ruleToString Cell.Flock ]
-                            , Html.option
-                                [ Html.Attributes.value <| Cell.ruleToString Cell.HighLife ]
-                                [ Html.text <| Cell.ruleToString Cell.HighLife ]
-                            , Html.option
-                                [ Html.Attributes.value <| Cell.ruleToString Cell.LongLife ]
-                                [ Html.text <| Cell.ruleToString Cell.LongLife ]
-                            , Html.option
-                                [ Html.Attributes.value <| Cell.ruleToString Cell.Maze ]
-                                [ Html.text <| Cell.ruleToString Cell.Maze ]
-                            , Html.option
-                                [ Html.Attributes.value <| Cell.ruleToString Cell.Move ]
-                                [ Html.text <| Cell.ruleToString Cell.Move ]
-                            , Html.option
-                                [ Html.Attributes.value <| Cell.ruleToString Cell.Seeds ]
-                                [ Html.text <| Cell.ruleToString Cell.Seeds ]
-                            , Html.option
-                                [ Html.Attributes.value <| Cell.ruleToString Cell.TwoXTwo ]
-                                [ Html.text <| Cell.ruleToString Cell.TwoXTwo ]
+                        , Html.ul []
+                            [ Html.li [ Html.Attributes.class "settings-row" ]
+                                [ Html.label
+                                    [ Html.Attributes.for "colorSchemeAlive" ]
+                                    [ Html.text "Alive cells color: " ]
+                                , Html.input
+                                    [ Html.Attributes.class "form-control"
+                                    , Html.Attributes.type_ "color"
+                                    , Html.Attributes.id "colorSchemeAlive"
+                                    , Html.Attributes.value model.colorScheme.alive
+                                    , Html.Events.onInput UpdateColorSchemeAlive
+                                    ]
+                                    []
+                                ]
+                            , Html.li [ Html.Attributes.class "settings-row" ]
+                                [ Html.label
+                                    [ Html.Attributes.for "colorSchemeDead" ]
+                                    [ Html.text "Dead cells color: " ]
+                                , Html.input
+                                    [ Html.Attributes.class "form-control"
+                                    , Html.Attributes.type_ "color"
+                                    , Html.Attributes.id "colorSchemeDead"
+                                    , Html.Attributes.value model.colorScheme.dead
+                                    , Html.Events.onInput UpdateColorSchemeDead
+                                    ]
+                                    []
+                                ]
+                            , Html.li [ Html.Attributes.class "settings-row" ]
+                                [ Html.label
+                                    [ Html.Attributes.for "colorSchemeBackground" ]
+                                    [ Html.text "Background color: " ]
+                                , Html.input
+                                    [ Html.Attributes.class "form-control"
+                                    , Html.Attributes.type_ "color"
+                                    , Html.Attributes.id "colorSchemeBackground"
+                                    , Html.Attributes.value model.colorScheme.background
+                                    , Html.Events.onInput UpdateColorSchemeBackground
+                                    ]
+                                    []
+                                ]
                             ]
                         ]
                     ]

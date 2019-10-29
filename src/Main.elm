@@ -565,8 +565,7 @@ view model =
                     [ Html.Attributes.class <| "form-group settings" ++ toggleSettings model.isSettingsCollapsed ]
                     [ Html.li [ Html.Attributes.class "settings-group" ]
                         [ Html.p [ Html.Attributes.class "settings-row settings-header" ]
-                            [
-                                Html.text "Cells"
+                            [ Html.text "Cells"
                             ]
                         , Html.ul []
                             [ Html.li [ Html.Attributes.class "settings-row" ]
@@ -602,8 +601,7 @@ view model =
                         ]
                     , Html.li [ Html.Attributes.class "settings-group" ]
                         [ Html.p [ Html.Attributes.class "settings-row settings-header" ]
-                            [
-                                Html.text "World"
+                            [ Html.text "World"
                             ]
                         , Html.ul []
                             [ Html.li [ Html.Attributes.class "settings-row" ]
@@ -636,8 +634,7 @@ view model =
                         ]
                     , Html.li [ Html.Attributes.class "settings-group" ]
                         [ Html.p [ Html.Attributes.class "settings-row settings-header" ]
-                            [
-                                Html.text "Random"
+                            [ Html.text "Random"
                             ]
                         , Html.ul []
                             [ Html.li [ Html.Attributes.class "settings-row" ]
@@ -670,8 +667,7 @@ view model =
                         ]
                     , Html.li [ Html.Attributes.class "settings-group" ]
                         [ Html.p [ Html.Attributes.class "settings-row settings-header" ]
-                            [
-                                Html.text "General"
+                            [ Html.text "General"
                             ]
                         , Html.ul []
                             [ Html.li [ Html.Attributes.class "settings-row" ]
@@ -725,8 +721,7 @@ view model =
                         ]
                     , Html.li [ Html.Attributes.class "settings-group" ]
                         [ Html.p [ Html.Attributes.class "settings-row settings-header" ]
-                            [
-                                Html.text "Colorscheme"
+                            [ Html.text "Colorscheme"
                             ]
                         , Html.ul []
                             [ Html.li [ Html.Attributes.class "settings-row" ]

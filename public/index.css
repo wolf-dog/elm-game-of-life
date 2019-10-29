@@ -25,7 +25,7 @@ label {
 }
 
 .menu button {
-  width: 4em;
+  width: 5em;
 }
 
 .menu-right {
@@ -42,6 +42,7 @@ ul.settings {
   padding: 0.5em;
   border: solid 1px rgb(206, 212, 218);
   border-radius: 5px;
+  z-index: 2;
 }
 
 .collapsed {
@@ -62,6 +63,10 @@ li.settings-row:first-child {
   background-color: rgb(218, 224, 230);
   padding: 0.1em 15px;
   border-bottom: solid 1px rgb(206, 212, 218);
+}
+
+.touch-screen {
+  z-index: 1;
 }
 
 .world {

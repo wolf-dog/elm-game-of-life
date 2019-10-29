@@ -2,6 +2,7 @@ module Main exposing (main)
 
 import Array exposing (Array)
 import Browser
+import Browser.Events
 import Cell
 import Html
 import Html.Attributes
@@ -57,7 +58,6 @@ type alias Model =
     , worldLength : Cell.Coordinates
     , colorScheme : ColorScheme
     , rule : Cell.Rule
-    , isInitialized : Bool
     , isSettingsCollapsed : Bool
     }
 
@@ -134,7 +134,6 @@ init _ =
       , worldLength = worldLength
       , colorScheme = colorScheme
       , rule = rule
-      , isInitialized = False
       , isSettingsCollapsed = True
       }
     , Cmd.none
@@ -146,7 +145,8 @@ init _ =
 
 
 type Msg
-    = GenerateRandom
+    = Clear
+    | GenerateRandom
     | Reset Cell.Cells
     | Tick
     | Start
@@ -162,13 +162,46 @@ type Msg
     | UpdateColorSchemeDead String
     | UpdateColorSchemeBackground String
     | UpdateRule String
-    | Initialize
     | ToggleSettings
+    | Clicked Int Int
+
+
+toggleClickedCell : Int -> Int -> Model -> Cell.Cells
+toggleClickedCell clickedX clickedY model =
+    let
+        indexY =
+            clickedY // model.cellLook.size
+
+        indexX =
+            clickedX // model.cellLook.size
+    in
+    case Array.get indexY model.cells of
+        Just xCells ->
+            case Array.get indexX xCells of
+                Just cell ->
+                    Array.set indexY (Array.set indexX (not cell) xCells) model.cells
+
+                Nothing ->
+                    model.cells
+
+        Nothing ->
+            model.cells
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
+        Clear ->
+            ( { model
+                | cells =
+                    Array.repeat model.worldLength.y <|
+                        Array.repeat model.worldLength.x False
+                , generation = 0
+                , isAutomated = False
+              }
+            , Cmd.none
+            )
+
         GenerateRandom ->
             ( model
             , Random.generate
@@ -209,7 +242,6 @@ update msg model =
                         newCells
                 , generation = 0
                 , isAutomated = False
-                , isInitialized = True
               }
             , Cmd.none
             )
@@ -358,13 +390,15 @@ update msg model =
             , Cmd.none
             )
 
-        Initialize ->
-            ( { model | isInitialized = True }
+        ToggleSettings ->
+            ( { model | isSettingsCollapsed = not model.isSettingsCollapsed }
             , Cmd.none
             )
 
-        ToggleSettings ->
-            ( { model | isSettingsCollapsed = not model.isSettingsCollapsed }
+        Clicked clickedX clickedY ->
+            ( { model
+                | cells = toggleClickedCell clickedX clickedY model
+              }
             , Cmd.none
             )
 
@@ -389,6 +423,14 @@ subscriptions model =
 onChange : (String -> msg) -> Html.Attribute msg
 onChange handler =
     Html.Events.on "change" (Json.Decode.map handler Html.Events.targetValue)
+
+
+onMouseClick : (Int -> Int -> msg) -> Html.Attribute msg
+onMouseClick handler =
+    Html.Events.on "click" <|
+        Json.Decode.map2 handler
+            (Json.Decode.field "offsetX" Json.Decode.int)
+            (Json.Decode.field "offsetY" Json.Decode.int)
 
 
 calcRounding : CellLook -> Int
@@ -427,45 +469,27 @@ toSvg coordinates cell cellLook colorScheme =
         []
 
 
-getResetText : Bool -> String
-getResetText isInitialized =
-    if isInitialized then
-        "Reset"
-
-    else
-        "Init"
-
-
-isStartDisabled : Bool -> Bool -> Bool
-isStartDisabled isInitialized isAutomated =
-    if not isInitialized then
-        True
-
-    else if isAutomated then
+isStartDisabled : Bool -> Bool
+isStartDisabled isAutomated =
+    if isAutomated then
         True
 
     else
         False
 
 
-isStopDisabled : Bool -> Bool -> Bool
-isStopDisabled isInitialized isAutomated =
-    if not isInitialized then
-        True
-
-    else if not isAutomated then
+isStopDisabled : Bool -> Bool
+isStopDisabled isAutomated =
+    if not isAutomated then
         True
 
     else
         False
 
 
-isTickDisabled : Bool -> Bool -> Bool
-isTickDisabled isInitialized isAutomated =
-    if not isInitialized then
-        True
-
-    else if isAutomated then
+isTickDisabled : Bool -> Bool
+isTickDisabled isAutomated =
+    if isAutomated then
         True
 
     else
@@ -494,6 +518,9 @@ view model =
 
         ruleHandler selectedValue =
             UpdateRule selectedValue
+
+        mouseHandler position =
+            Clicked position
     in
     Html.div []
         [ Html.div [ Html.Attributes.class "nav" ]
@@ -501,24 +528,29 @@ view model =
             , Html.div [ Html.Attributes.class "menu btn-group" ]
                 [ Html.button
                     [ Html.Attributes.class "btn btn-info"
-                    , Html.Events.onClick GenerateRandom
+                    , Html.Events.onClick Clear
                     ]
-                    [ Html.text <| getResetText model.isInitialized ]
+                    [ Html.text "Clear" ]
                 , Html.button
                     [ Html.Attributes.class "btn btn-info"
-                    , Html.Attributes.disabled <| isTickDisabled model.isInitialized model.isAutomated
+                    , Html.Events.onClick GenerateRandom
+                    ]
+                    [ Html.text "Random" ]
+                , Html.button
+                    [ Html.Attributes.class "btn btn-info"
+                    , Html.Attributes.disabled <| isTickDisabled model.isAutomated
                     , Html.Events.onClick Tick
                     ]
                     [ Html.text "Tick" ]
                 , Html.button
                     [ Html.Attributes.class "btn btn-info"
-                    , Html.Attributes.disabled <| isStartDisabled model.isInitialized model.isAutomated
+                    , Html.Attributes.disabled <| isStartDisabled model.isAutomated
                     , Html.Events.onClick Start
                     ]
                     [ Html.text "Start" ]
                 , Html.button
                     [ Html.Attributes.class "btn btn-info"
-                    , Html.Attributes.disabled <| isStopDisabled model.isInitialized model.isAutomated
+                    , Html.Attributes.disabled <| isStopDisabled model.isAutomated
                     , Html.Events.onClick Stop
                     ]
                     [ Html.text "Stop" ]
@@ -728,7 +760,15 @@ view model =
             , Html.text <| String.fromInt model.generation
             ]
         , Html.div [ Html.Attributes.class "world" ]
-            [ Svg.svg
+            [ Html.div
+                [ onMouseClick mouseHandler
+                , Html.Attributes.class "touch-screen"
+                , Html.Attributes.style "position" "absolute"
+                , Html.Attributes.style "width" <| worldSize.x ++ "px"
+                , Html.Attributes.style "height" <| worldSize.y ++ "px"
+                ]
+                []
+            , Svg.svg
                 [ Svg.Attributes.width worldSize.x
                 , Svg.Attributes.height worldSize.y
                 , Svg.Attributes.viewBox <| "0 0 " ++ worldSize.x ++ " " ++ worldSize.y

@@ -40,7 +40,8 @@ label {
 
 ul.settings {
   position: absolute;
-  width: 13em;
+  left: -21em;
+  width: 26.5em;
   margin-top: 0.25em;
   background: rgb(255, 255, 255);
   padding: 0.5em;
@@ -51,6 +52,16 @@ ul.settings {
 
 .collapsed {
   display: none;
+}
+
+li.settings-col {
+  display: inline-flex;
+}
+
+li.settings-col:first-of-type {
+  padding-right: 0.5em;
+  margin-right: 0.5em;
+  border-right: dashed 1px rgb(206, 212, 218);
 }
 
 li.settings-group {
@@ -70,6 +81,7 @@ p.settings-header {
 
 li.settings-row {
   font-size: 0.9em;
+  width: 13.5em;
   margin-top: 0.5em;
 }
 
